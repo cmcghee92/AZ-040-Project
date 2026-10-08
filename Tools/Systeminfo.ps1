@@ -9,9 +9,9 @@ $info = [PSCustomObject]@{
     ComputerName    = $computer
     OS              = $os.Caption
     LastBootUpTime  = $os.LastBootUpTime
-    CDriveSize      = $cDrive.Size
-    CDriveFreeSpace = $cDrive.FreeSpace
+    CDriveSize      = [math]::Round(($cDrive.Size / 1GB), 2)
+    CDriveFreeSpace = [math]::Round(($cDrive.FreeSpace / 1GB), 2)
     CDriveFreeSpaceGB = [math]::Round(($cDrive.FreeSpace / 1GB), 2)
     UptimeHours = [math]::Round($uptime.TotalHours, 2)
 }
-$info 
+Write-Output $info 
